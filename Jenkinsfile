@@ -17,7 +17,7 @@ timestamps {
         }
 
         stage ('archive') {
-            dir ("build") {
+            dir ("build/distribute") {
                 archiveArtifacts "*.zip"
             }
         }
