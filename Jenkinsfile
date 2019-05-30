@@ -12,7 +12,9 @@ timestamps {
 
         stage ('build') {
             withCredentials([usernamePassword(credentialsId: 'jenkins', usernameVariable: 'JENKINS_USER', passwordVariable: 'JENKINS_PASSWORD')]) {
-                sh "make clean all"
+                withEnv(["PATH+GOLANG=${tool 'golang-amd64'}/bin"]) {
+                    sh "make clean all"
+                }
             }
         }
 
